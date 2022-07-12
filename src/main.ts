@@ -2,12 +2,18 @@ import './style.css'
 
 const App = document.querySelector('#app')!
 
-let y = ['y','y','y','y','y','y','y','y','y']
+/*let y = ['y','y','y','y','y','y','y','y','y']
 let w = ['w','w','w','w','w','w','w','w','w']
 let g = ['g','g','g','g','g','g','g','g','g']
 let b = ['b','b','b','b','b','b','b','b','b']
 let r = ['r','r','r','r','r','r','r','r','r']
-let o = ['o','o','o','o','o','o','o','o','o']
+let o = ['o','o','o','o','o','o','o','o','o']*/
+let y = ['b','y','y','b','y','w','r','o','o']
+let w = ['o','w','w','r','w','g','y','b','y']
+let g = ['o','r','b','w','g','o','g','g','g']
+let b = ['o','w','b','y','b','r','w','b','g']
+let r = ['y','b','g','y','r','r','w','o','r']
+let o = ['r','y','b','g','o','o','r','g','w']
 
 //let raw_cube:string;
 
@@ -203,12 +209,273 @@ function down_i() {
   y[7] = ty[3]
   y[8] = ty[6]
 }
-left()
-left_i()
-right()
-right_i()
-down()
-down_i()
 
+function up() {
+  // White clockwise
+  const to = o.slice()
+  const tb = b.slice()
+  const tr = r.slice()
+  const tw = w.slice()
+  const tg = g.slice()
+  b[0] = to[0]
+  b[1] = to[1]
+  b[2] = to[2]
+  r[0] = tb[0]
+  r[1] = tb[1]
+  r[2] = tb[2]
+  g[0] = tr[0]
+  g[1] = tr[1]
+  g[2] = tr[2]
+  o[0] = tg[0]
+  o[1] = tg[1]
+  o[2] = tg[2]
+  w[0] = tw[6]
+  w[1] = tw[3]
+  w[2] = tw[0]
+  w[3] = tw[7]
+  w[5] = tw[1]
+  w[6] = tw[8]
+  w[7] = tw[5]
+  w[8] = tw[2]
+}
+
+function up_i() {
+  // White cclockwise
+  const to = o.slice()
+  const tb = b.slice()
+  const tr = r.slice()
+  const tw = w.slice()
+  const tg = g.slice()
+  b[0] = tr[0]
+  b[1] = tr[1]
+  b[2] = tr[2]
+  r[0] = tg[0]
+  r[1] = tg[1]
+  r[2] = tg[2]
+  g[0] = to[0]
+  g[1] = to[1]
+  g[2] = to[2]
+  o[0] = tb[0]
+  o[1] = tb[1]
+  o[2] = tb[2]
+  w[0] = tw[2]
+  w[1] = tw[5]
+  w[2] = tw[8]
+  w[3] = tw[1]
+  w[5] = tw[7]
+  w[6] = tw[0]
+  w[7] = tw[3]
+  w[8] = tw[6]
+}
+
+function front() {
+  // Blue clockwise
+  const to = o.slice()
+  const tb = b.slice()
+  const tr = r.slice()
+  const tw = w.slice()
+  const ty = y.slice()
+  y[0] = to[6]
+  y[1] = to[3]
+  y[2] = to[0]
+  r[2] = ty[0]
+  r[5] = ty[1]
+  r[8] = ty[2]
+  w[6] = tr[8]
+  w[7] = tr[5]
+  w[8] = tr[2]
+  o[0] = tw[6]
+  o[3] = tw[7]
+  o[6] = tw[8]
+  b[0] = tb[6]
+  b[1] = tb[3]
+  b[2] = tb[0]
+  b[3] = tb[7]
+  b[5] = tb[1]
+  b[6] = tb[8]
+  b[7] = tb[5]
+  b[8] = tb[2]
+}
+
+function front_i() {
+  // Blue cclockwise
+  const to = o.slice()
+  const tb = b.slice()
+  const tr = r.slice()
+  const tw = w.slice()
+  const ty = y.slice()
+  o[6] = ty[0]
+  o[3] = ty[1]
+  o[0] = ty[2]
+  y[0] = tr[2]
+  y[1] = tr[5]
+  y[2] = tr[8]
+  r[2] = tw[8]
+  r[5] = tw[7]
+  r[8] = tw[6]
+  w[8] = to[6]
+  w[7] = to[3]
+  w[6] = to[0]
+  b[0] = tb[2]
+  b[1] = tb[5]
+  b[2] = tb[8]
+  b[3] = tb[1]
+  b[5] = tb[7]
+  b[6] = tb[0]
+  b[7] = tb[3]
+  b[8] = tb[6]
+}
+
+function back() {
+  // Green clockwise
+  const to = o.slice()
+  const tg = g.slice()
+  const tr = r.slice()
+  const tw = w.slice()
+  const ty = y.slice()
+  o[8] = ty[6]
+  o[7] = ty[7]
+  o[6] = ty[8]
+  y[6] = tr[0]
+  y[7] = tr[3]
+  y[8] = tr[6]
+  r[0] = tw[2]
+  r[3] = tw[1]
+  r[6] = tw[0]
+  w[0] = to[2]
+  w[1] = to[5]
+  w[2] = to[8]
+  g[0] = tg[6]
+  g[1] = tg[3]
+  g[2] = tg[0]
+  g[3] = tg[7]
+  g[5] = tg[1]
+  g[6] = tg[8]
+  g[7] = tg[5]
+  g[8] = tg[2]
+}
+
+function back_i() {
+  // Green cclockwise
+  const to = o.slice()
+  const tg = g.slice()
+  const tr = r.slice()
+  const tw = w.slice()
+  const ty = y.slice()
+  y[6] = ty[8]
+  y[7] = to[5]
+  y[8] = to[2]
+  r[0] = ty[6]
+  r[3] = ty[7]
+  r[6] = ty[8]
+  w[0] = tr[6]
+  w[1] = tr[3]
+  w[2] = tr[0]
+  o[2] = tw[0]
+  o[5] = tw[1]
+  o[8] = tw[2]
+  g[0] = tg[2]
+  g[1] = tg[5]
+  g[2] = tg[8]
+  g[3] = tg[1]
+  g[5] = tg[7]
+  g[6] = tg[0]
+  g[7] = tg[3]
+  g[8] = tg[6]
+}
+
+// Solving logic
+let solve_state = 1;
+let cube_solved = true;
+
+function cube_decide_cross() {
+  if (w[1] === 'w' && w[5] === 'w' &&  w[3] === 'w' && w[7] === 'w') {
+    // If cross is finished then continue with next step.
+    solve_state = 2;
+  }
+  else if (solve_state === 1) {
+    if (b[3] === 'w') {
+      for (let i=0; i<3; i++) {
+        if (w[3] !== 'w') {
+          left_i()
+          i = 3
+        } else {
+          up()
+        }
+      }
+    }
+    else if (b[5] === 'w') {
+      for (let i=0; i<3; i++) {
+        if (w[5] !== 'w') {
+          right()
+          i=3
+        } else {
+          up()
+        }
+      }
+    }
+    else if (r[5] === 'w') {
+      for (let i=0; i<3; i++) {
+        if (w[1] !== 'w') {
+          front()
+          i=3
+        } else {
+          up()
+        }
+      }
+    }
+    else if (r[3] === 'w') {
+      for (let i=0; i<3; i++) {
+        if (w[1] !== 'w') {
+          back_i()
+          i=3
+        } else {
+          up()
+        }
+      }
+    }
+    else if (g[5] === 'w') {
+      for (let i=0; i<3; i++) {
+        if (w[3] !== 'w') {
+          left()
+          i=3
+        } else {
+          up()
+        }
+      }
+    }
+    else if (g[3] === 'w') {
+      for (let i=0; i<3; i++) {
+        if (w[5] !== 'w') {
+          right_i()
+          i=3
+        } else {
+          up()
+        }
+      }
+    }
+    else if (o[5] === 'w') {
+      for (let i=0; i<3; i++) {
+        if (w[1] !== 'w') {
+          back()
+          i=3
+        } else {
+          up()
+        }
+      }
+    }
+    else if (o[3] === 'w') {
+      for (let i=0; i<3; i++) {
+        if (w[1] !== 'w') {
+          front_i()
+          i=3
+        } else {
+          up()
+        }
+      }
+    }
+    //NOT DONE YET
+  }
+}
 
 App.innerHTML = parseCubeString()
