@@ -1,5 +1,6 @@
 # RBX, a simple TypeScript rubiks cube solver.
-This is based on GitHub user [matt2uy's Arduino Cube-Solver](https://github.com/matt2uy/Cube-Solver)
+The solver is based on [matt2uy's Arduino Cube-Solver](https://github.com/matt2uy/Cube-Solver).
+And the 3d cube is taken from [brickmaker's Three.js Rubiks Cube](https://github.com/brickmaker/three-rubik-cube).
 ## Usage
 yea it not done yet so no
 
