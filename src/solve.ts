@@ -36,6 +36,8 @@ export class SOLVER {
     return temp;
   }
   solve() {
+    this.instructions = ['AAAAA'];
+    console.log(this.instructions)
     this.solving = true;
     while (this.finished === false) {
       this.cube_decide_cross();
@@ -44,7 +46,6 @@ export class SOLVER {
     console.log(this.instructions)
     this.solving = false;
     this.finished = false;
-    this.instructions = [];
   }
   // rotations:
   left() {
@@ -75,7 +76,7 @@ export class SOLVER {
     this.r[6] = tr[8]
     this.r[7] = tr[5]
     this.r[8] = tr[2]
-    if (this.solving) this.instructions.push('left')
+
   }
 
   left_i() {
@@ -105,7 +106,7 @@ export class SOLVER {
     this.r[6] = tr[0]
     this.r[7] = tr[3]
     this.r[8] = tr[6]
-    if (this.solving) this.instructions.push('left_i')
+
   }
   
   right() {
@@ -135,7 +136,7 @@ export class SOLVER {
     this.o[6] = to[8]
     this.o[7] = to[5]
     this.o[8] = to[2]
-    if (this.solving) this.instructions.push('right')
+
   }
   
   right_i() {
@@ -165,7 +166,7 @@ export class SOLVER {
     this.o[6] = to[0]
     this.o[7] = to[3]
     this.o[8] = to[6]
-    if (this.solving) this.instructions.push('right_i')
+
   }
   
   down() {
@@ -195,7 +196,7 @@ export class SOLVER {
     this.y[6] = ty[8]
     this.y[7] = ty[5]
     this.y[8] = ty[2]
-    if (this.solving) this.instructions.push('down')
+
   }
   
   down_i() {
@@ -225,7 +226,7 @@ export class SOLVER {
     this.y[6] = ty[0]
     this.y[7] = ty[3]
     this.y[8] = ty[6]
-    if (this.solving) this.instructions.push('down_i')
+
   }
   
   up() {
@@ -255,7 +256,7 @@ export class SOLVER {
     this.w[6] = tw[8]
     this.w[7] = tw[5]
     this.w[8] = tw[2]
-    if (this.solving) this.instructions.push('up')
+
   }
   
   up_i() {
@@ -285,7 +286,7 @@ export class SOLVER {
     this.w[6] = tw[0]
     this.w[7] = tw[3]
     this.w[8] = tw[6]
-    if (this.solving) this.instructions.push('up_i')
+
   }
   
   front() {
@@ -315,7 +316,7 @@ export class SOLVER {
     this.b[6] = tb[8]
     this.b[7] = tb[5]
     this.b[8] = tb[2]
-    this.instructions.push('front')
+
   }
   
   front_i() {
@@ -345,7 +346,7 @@ export class SOLVER {
     this.b[6] = tb[0]
     this.b[7] = tb[3]
     this.b[8] = tb[6]
-    if (this.solving) this.instructions.push('front_i')
+
   }
   
   back() {
@@ -375,7 +376,6 @@ export class SOLVER {
     this.g[6] = tg[8]
     this.g[7] = tg[5]
     this.g[8] = tg[2]
-    this.instructions.push('back')
   }
   
   back_i() {
@@ -405,7 +405,7 @@ export class SOLVER {
     this.g[6] = tg[0]
     this.g[7] = tg[3]
     this.g[8] = tg[6]
-    if (this.solving) this.instructions.push('back_i')
+
   }
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -427,9 +427,11 @@ export class SOLVER {
         for (let i=0; i<3; i++) {
           if (this.w[3] !== 'w') {
             this.left_i()
+            this.instructions.push('left_i')
             i = 3
           } else {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
@@ -437,9 +439,11 @@ export class SOLVER {
         for (let i=0; i<3; i++) {
           if (this.w[5] !== 'w') {
             this.right()
+            this.instructions.push('right')
             i=3
           } else {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
@@ -447,9 +451,11 @@ export class SOLVER {
         for (let i=0; i<3; i++) {
           if (this.w[1] !== 'w') {
             this.front()
+            this.instructions.push('front')
             i=3
           } else {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
@@ -457,9 +463,11 @@ export class SOLVER {
         for (let i=0; i<3; i++) {
           if (this.w[1] !== 'w') {
             this.back_i()
+            this.instructions.push('back_i')
             i=3
           } else {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
@@ -467,9 +475,11 @@ export class SOLVER {
         for (let i=0; i<3; i++) {
           if (this.w[3] !== 'w') {
             this.left()
+            this.instructions.push('left')
             i=3
           } else {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
@@ -477,9 +487,11 @@ export class SOLVER {
         for (let i=0; i<3; i++) {
           if (this.w[5] !== 'w') {
             this.right_i()
+            this.instructions.push('right_i')
             i=3
           } else {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
@@ -487,9 +499,11 @@ export class SOLVER {
         for (let i=0; i<3; i++) {
           if (this.w[1] !== 'w') {
             this.back()
+            this.instructions.push('back')
             i=3
           } else {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
@@ -497,9 +511,11 @@ export class SOLVER {
         for (let i=0; i<3; i++) {
           if (this.w[1] !== 'w') {
             this.front_i()
+            this.instructions.push('front_i')
             i=3
           } else {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
@@ -507,10 +523,13 @@ export class SOLVER {
         for (let i=0; i<3; i++) {
           if (this.w[7] !== 'w') {
             this.front()
+            this.instructions.push('front')
             this.front()
+            this.instructions.push('front')
             i=3
           } else {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
@@ -518,10 +537,13 @@ export class SOLVER {
         for (let i=0; i<3; i++) {
           if (this.w[1] !== 'w') {
             this.back()
+            this.instructions.push('back')
             this.back()
+            this.instructions.push('back')
             i=3
           } else {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
@@ -529,10 +551,13 @@ export class SOLVER {
         for (let i=0; i<3; i++) {
           if (this.w[5] !== 'w') {
             this.right()
+            this.instructions.push('right')
             this.right()
+            this.instructions.push('right')
             i=3
           } else {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
@@ -540,78 +565,109 @@ export class SOLVER {
         for (let i=0; i<3; i++) {
           if (this.w[3] !== 'w') {
             this.left()
+            this.instructions.push('left')
             this.left()
+            this.instructions.push('left')
             i=3
           } else {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
       else if (this.b[1] === 'w') {
         this.front()
+        this.instructions.push('front')
         this.up_i()
+        this.instructions.push('up_i')
         this.right()
+        this.instructions.push('right')
       }
       else if (this.b[7] === 'w') {
         for (let i=0; i<3; i++) {
           if (this.w[7] !== 'w') {
             this.front_i()
+            this.instructions.push('front_i')
             this.up_i()
+            this.instructions.push('up_i')
             this.right()
+            this.instructions.push('right')
             i=3
           } else  {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
       else if (this.o[2] === 'w'){
         this.right()
+        this.instructions.push('right')
         this.up_i()
+        this.instructions.push('up_i')
         this.back()
+        this.instructions.push('back')
       }
       else if (this.o[7] === 'w') {
         for (let i=0; i<3; i++) {
           if (this.w[5] !== 'w') {
             this.right_i()
+            this.instructions.push('right_i')
             this.up_i()
+            this.instructions.push('up_i')
             this.back()
+            this.instructions.push('back')
             i=3
           } else {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
       else if (this.g[1] === 'w') {
         this.back()
+        this.instructions.push('back')
         this.up_i()
+        this.instructions.push('up_i')
         this.left()
+        this.instructions.push('left')
       }
       else if (this.g[7] === 'w') {
         for (let i=0; i<3; i++) {
           if (this.w[1] !== 'w') {
             this.back_i()
+            this.instructions.push('back_i')
             this.up_i()
+            this.instructions.push('up_i')
             this.left()
+            this.instructions.push('left')
             i=3
           } else {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
       else if (this.r[1] === 'w') {
         this.left()
+        this.instructions.push('left')
         this.up_i()
+        this.instructions.push('up_i')
         this.front()
+        this.instructions.push('front')
       }
       else if (this.r[7] === 'w') {
         for (let i=0; i<3; i++) {
           if (this.w[3] !== 'w') {
             this.left_i()
+            this.instructions.push('left_i')
             this.up_i()
+            this.instructions.push('up_i')
             this.front()
+            this.instructions.push('front')
             i=3
           } else {
             this.up()
+            this.instructions.push('up')
           }
         }
       }
@@ -722,5 +778,8 @@ export class SOLVER {
   }
   print() {
     console.log(this.parseCubeString())
+  }
+  AAAA() {
+    console.log(this.instructions)
   }
 }

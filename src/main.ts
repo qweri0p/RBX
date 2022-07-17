@@ -149,7 +149,6 @@ function rotateFace(axis:string, direction: number, level: number) {
                 }
             }
     }
-    sv.print();
 }
 
 const scene = new THREE.Scene();
